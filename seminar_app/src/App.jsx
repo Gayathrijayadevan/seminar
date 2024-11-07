@@ -52,8 +52,8 @@
 // ); 
 // } 
 // export default App
-//The input element set attribute ref  to input ref that allows us to manipulate it directly in the focusInput function.
-//when the button is clicked it trigers the input function
+// The input element set attribute ref  to input ref that allows us to manipulate it directly in the focusInput function.
+// when the button is clicked it trigers the input function
 
 
 // users can mark individual todo items as completed or incomplete by clicking checkboxes
@@ -80,13 +80,13 @@
 
 //   return (
 //     <>
-//       {todos.map(todo => (
+//       {todos.map(todo => (  //ensures each todo item has a unique key for efficient rendering. 
 //         <div key={todo.id}>
-//           <label>
+//           <label>  
 //             <input
 //               type="checkbox"
 //               checked={todo.complete}
-//               onChange={() => dispatch({ type: "TOGGLE_TODO", id: todo.id })}  //calling the dispatch
+//               onChange={() => dispatch({ type: "TOGGLE_TODO", id: todo.id })}  // When the checkbox is clicked, it calls dispatch with an action object.
 //             />
 //             {todo.title}
 //           </label>
@@ -95,19 +95,29 @@
 //     </>
 //   );
 // }
-
 // export default TodoApp;
+//Loops over each todo item and returns with the div
 
 
 // error handiling in useReducer
 
-function reducer(state, action) {
-  switch (action.type) { //The switch statement checks the action.type to determine which case to execute.
-  case "INCREMENT":
-     return state + 1; //When the action.type is "INCREMENT", the reducer will return state + 1.
-  case "DECREMENT": 
-    return state - 1; //When the action.type is "DECREMENT", the reducer will return state - 1.
-  default: throw new Error(`Unhandled action type: ${action.type}`); } } //If the action.type doesn't match any cases it will throw an error saying "Unhandled action type: <action type>".
-   
-  export default reducer
+import React, { useReducer } from 'react';
+import Reducer from './Reducer'; // assuming Reducer.js contains your Reducer function
+
+function Counter() {
+  const [state, dispatch] = useReducer(Reducer, 0); // Initial state is 0
+  
+  const increment = () => dispatch({ type: 'INCREMENT' });
+  const decrement = () => dispatch({ type: 'DECREMENT' });
+
+  return (
+    <div>
+      <p>Current count: {state}</p>
+      <button onClick={increment}>Increment</button>
+      <button onClick={decrement}>Decrement</button>
+    </div>
+  );
+}
+
+export default Counter;
 
