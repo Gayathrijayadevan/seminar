@@ -34,24 +34,25 @@
 
 // export default App
 
+
 // userefexample
 
 // how to programmatically set focus on user input box 
-// import { useRef } from "react"; 
+import { useRef } from "react"; 
 
-// function App() { 
-// const inputRef = useRef();  //creating a reference with useref which will hold a reference to the input
-// const focusInput = () => {  //creating function to  focus input
-// inputRef.current.focus(); //The focus method is a standard JavaScript method used to set focus on an input field, allowing the user to start typing immediately
-// }; 
-// return ( 
-// <> 
-// <input ref={inputRef} type="text" />   
-// <button onClick={focusInput}>Focus Input</button> 
-// </> 
-// ); 
-// } 
-// export default App
+function App() { 
+const inputRef = useRef();  //creating a reference with useref which will hold a reference to the input
+const focusInput = () => {  //creating function to  focus input
+inputRef.current.focus(); //The focus method is a standard JavaScript method used to set focus on an input field, allowing the user to start typing immediately
+}; 
+return ( 
+<> 
+<input ref={inputRef} type="text" />   
+<button onClick={focusInput}>Focus Input</button> 
+</> 
+); 
+} 
+export default App
 // The input element set attribute ref  to input ref that allows us to manipulate it directly in the focusInput function.
 // when the button is clicked it trigers the input function
 
@@ -101,23 +102,24 @@
 
 // error handiling in useReducer
 
-import React, { useReducer } from 'react';
-import Reducer from './Reducer'; // assuming Reducer.js contains your Reducer function
+// import React, { useReducer } from 'react';
+// import Reducer from './Reducer'; 
 
-function Counter() {
-  const [state, dispatch] = useReducer(Reducer, 0); // Initial state is 0
+// function Counter() {
+//   const [state, dispatch] = useReducer(Reducer, 0); // useReducer takes two arguments: a reducer function (Reducer) and an initial state (set to 0 here).
+
   
-  const increment = () => dispatch({ type: 'INCREMENT' });
-  const decrement = () => dispatch({ type: 'DECREMENT' });
+//   const increment = () => dispatch({ type: 'INCREMENT' }); //increment and decrement functions use dispatch to send actions to the reducer.
+//   const decrement = () => dispatch({ type: 'DECREMENT' });
 
-  return (
-    <div>
-      <p>Current count: {state}</p>
-      <button onClick={increment}>Increment</button>
-      <button onClick={decrement}>Decrement</button>
-    </div>
-  );
-}
-
-export default Counter;
+//   return (
+//     <div>
+//       <p>Current count: {state}</p>
+//       <button onClick={increment}>Increment</button>
+//       <button onClick={decrement}>Decrement</button>
+//     </div>
+//   );
+// }
+// //Displays the current state (the counter) inside a <p> element.
+// export default Counter;
 
